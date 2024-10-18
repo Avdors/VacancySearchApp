@@ -1,0 +1,54 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="add_letter">Добавить сопроводительное</string>
+    <string name="ask_question">Задайте вопрос работодателю</string>
+
+    <string name="confirm">"Подтвердить"</string>
+    <string name="continue_str">Продолжить</string>
+    <string name="cv">Резюме для отклика</string>
+
+    <string name="email">"Электронная почта"</string>
+    <string name="enter_code">"Напишите его, чтобы подтвердить,что это вы, а не кто-то другой входит в личный кабинет"</string>
+
+    <string name="favorites">Избранное</string>
+    <string name="he_get_it">Он получит его с откликом на вакансию</string>
+    <string name="i_find_people">Я ищу сотрудников</string>
+    <string name="job_title_text">UI/UX дизайнер</string>
+    <string name="login_lk">Вход в личный кабинет</string>
+    <string name="login_password">Войти с паролем</string>
+    <string name="letter">Ваше сопроводительное письмо</string>
+
+    <string name="messages">Сообщения</string>
+    <string name="more">Еще</string>
+
+    <string name="posting_vacancies">Размещение вакансий и доступ к базе резюме</string>
+    <string name="profile">Профиль</string>
+
+    <string name="respons">Откликнуться</string>
+    <string name="responses">Отклики</string>
+
+    <string name="search">Поиск</string>
+    <string name="search_people">Поиск сотрудников</string>
+    <string name="search_position">"Должность, ключевые слова"</string>
+    <string name="search_work">Поиск работы</string>
+    <string name="send_code">"Отправили код на %1$s"</string>
+
+    <string name="ui_ux">UI/UX дизайнер</string>
+    <string name="up_vacancy">"Поднять"</string>
+
+    <string name="vacancy_for_you">"Вакансии для вас"</string>
+    <string name="wrong_email_address">"Вы ввели неверный e-mail"</string>
+    <string name="wrong_kod">"Вы ввели неверные числа"</string>
+
+    <string name="your_email">"*** ваш e-mail ***"</string>
+    <string name="your_tasks">Ваши задачи</string>
+
+    <string name="human_one">%d человек</string>
+    <string name="human_few">%d человека</string>
+
+    <string name="vacancy_one">%d вакансия</string>
+    <string name="vacancy_few">%d вакансии</string>
+    <string name="vacancy_many">%d вакансий</string>
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/back_grey1_corner12">
+
+    <TextView
+        android:id="@+id/item_peopl_count"
+        style="@style/RegularText.14size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginBottom="@dimen/dp12"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Сейчас просматривают 20 человек" />
+
+    <ImageView
+        android:id="@+id/search_like_bttn"
+        style="@style/RegularText.14size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginEnd="@dimen/dp16"
+        android:background="@drawable/heart_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Сейчас просматривают *** человек" />
+
+    <TextView
+        android:id="@+id/item_vacancy_title"
+        style="@style/MediumText.16size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginEnd="@dimen/dp92"
+        android:maxLines="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_peopl_count"
+        tools:text="Пример титл" />
+
+    <TextView
+        android:id="@+id/item_vacancy_salary"
+        style="@style/MediumText.16size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp92"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_vacancy_title"
+        tools:text="100500-∞ $" />
+
+    <TextView
+        android:id="@+id/item_vacancy_adress"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp92"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_vacancy_salary"
+        tools:text="Москва" />
+
+    <TextView
+        android:id="@+id/item_vacancy_company"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp92"
+        app:drawableEndCompat="@drawable/done_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_vacancy_adress"
+        tools:text="Наша компания" />
+
+    <TextView
+        android:id="@+id/item_experience"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp92"
+        android:drawablePadding="@dimen/dp8"
+        app:drawableStartCompat="@drawable/experience_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_vacancy_company"
+        tools:text="Требуемый опыт: без опыта" />
+
+    <TextView
+        android:id="@+id/item_date"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp92"
+        android:drawablePadding="@dimen/dp8"
+        android:textColor="@color/grey3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_experience"
+        tools:text="Опубликовано 20 июня" />
+
+    <Button
+        android:id="@+id/respons_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp24"
+        android:layout_marginEnd="@dimen/dp16"
+        android:layout_marginBottom="@dimen/dp16"
+        android:backgroundTint="@color/green"
+        app:cornerRadius="@dimen/dp24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_date"
+        tools:text="@string/respons"
+        android:text="@string/respons"
+        style="@style/RegularText.14size"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
