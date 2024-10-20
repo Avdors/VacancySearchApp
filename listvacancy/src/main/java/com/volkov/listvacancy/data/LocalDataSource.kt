@@ -17,7 +17,7 @@ class LocalDataSource(
         return vacancyDao.getAllVacancies()
     }
 
-    suspend fun savaVacanciesToDb(vacancies: List<VacancyModelDataBase>) {
+    suspend fun saveVacanciesToDb(vacancies: List<VacancyModelDataBase>) {
         vacancyDao.insertVacancies(vacancies)
     }
 
