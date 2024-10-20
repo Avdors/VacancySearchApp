@@ -82,4 +82,29 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    //Unit test
+    implementation(libs.mockk)
+    implementation(libs.kotlinx.coroutines.test)
+    implementation(libs.kotlin.test.junit)
+    implementation(libs.truth.truth)
+
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    // Зависимость для работы с Ktor (если используете Ktor)
+    androidTestImplementation(libs.ktor.client.android)
+    androidTestImplementation(libs.ktor.client.mock)
+    androidTestImplementation(libs.ktor.client.core)
+    androidTestImplementation(libs.ktor.client.serialization)
+    androidTestImplementation(libs.ktor.client.logging)
+    androidTestImplementation(libs.ktor.client.cio)
+    androidTestImplementation(libs.ktor.client.content.negotiation)
+    // Koin для тестов
+    testImplementation(libs.koin.test)
+    androidTestImplementation(libs.koin.test)
+    // Для мокирования зависимостей
+    testImplementation(libs.koin.test.junit)
+    androidTestImplementation(libs.koin.test.junit)
+
+
 }

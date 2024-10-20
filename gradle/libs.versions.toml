@@ -31,7 +31,7 @@ navigationCompose = "2.7.7"
 mockitocore = "5.11.0"
 mockkversion = "1.12.0"
 junit-jupiter = "5.11.0"
-
+truthversion = "1.1.5"
 
 
 [libraries]
@@ -68,6 +68,9 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin_version" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin_version" }
 koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin_version" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin_version" }
+koin-test_junit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin_version" }
+
 
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }
@@ -78,6 +81,7 @@ mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref =
 mockk = { module = "io.mockk:mockk", version.ref = "mockkversion" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkversion" }
 mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "junit-jupiter" }
+truth-truth = { group = "com.google.truth", name = "truth", version.ref = "truthversion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
