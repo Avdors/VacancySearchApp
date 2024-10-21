@@ -6,14 +6,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ModelListResponseOfferAndVacancies(
     @SerialName("offers")
-    val offers: List<FeatListVacancyOffer?>? = null,
+    val offers: List<DataModelListVacancyOffer?>? = null,
     @SerialName("vacancies")
-    val vacancies: List<FeatListVacancy?>? = null
+    val vacancies: List<DataModelListVacancy?>? = null
 )
 
 
 @Serializable
-data class FeatListVacancyOffer(
+data class DataModelListVacancyOffer(
     @SerialName("id")
     val id: String? = null,
 
@@ -34,7 +34,7 @@ data class Button(
 )
 
 @Serializable
-data class FeatListVacancy(
+data class DataModelListVacancy(
     @SerialName("id")
     val id: String? = null,
 
@@ -45,13 +45,13 @@ data class FeatListVacancy(
     val title: String? = null,
 
     @SerialName("address")
-    val address: FeatListAddress? = null,
+    val address: DataModelListAddress? = null,
 
     @SerialName("company")
     val company: String? = null,
 
     @SerialName("experience")
-    val experience: FeatListExperience? = null,
+    val experience: DataModelListExperience? = null,
 
     @SerialName("publishedDate")
     val publishedDate: String? = null,
@@ -60,7 +60,7 @@ data class FeatListVacancy(
     val isFavorite: Boolean? = null,
 
     @SerialName("salary")
-    val salary: FeatListSalary? = null,
+    val salary: DataModelListSalary? = null,
 
     @SerialName("schedules")
     val schedules: List<String?>? = null,
@@ -79,7 +79,7 @@ data class FeatListVacancy(
 )
 
 @Serializable
-data class FeatListAddress(
+data class DataModelListAddress(
     @SerialName("town")
     val town: String? = null,
 
@@ -91,7 +91,7 @@ data class FeatListAddress(
 )
 
 @Serializable
-data class FeatListExperience(
+data class DataModelListExperience(
     @SerialName("previewText")
     val previewText: String? = null,
 
@@ -100,7 +100,7 @@ data class FeatListExperience(
 )
 
 @Serializable
-data class FeatListSalary(
+data class DataModelListSalary(
     @SerialName("full")
     val full: String? = null,
 
