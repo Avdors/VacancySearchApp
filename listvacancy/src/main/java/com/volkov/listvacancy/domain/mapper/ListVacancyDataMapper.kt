@@ -14,28 +14,35 @@ import com.volkov.listvacancy.domain.model.ListExperienceDomainModel
 import com.volkov.listvacancy.domain.model.ListSalaryDomainModel
 import com.volkov.listvacancy.domain.model.ListVacancyDomainModel
 
+
 class ListVacancyDataMapper {
     fun mapToDomain(vacancy: DataModelListVacancy): ListVacancyDomainModel {
         return ListVacancyDomainModel(
             id = vacancy.id ?: "",
             lookingNumber = vacancy.lookingNumber ?: 0,
             title = vacancy.title ?: "",
-            address = ListAddressDomainModel(
-                vacancy.address?.town ?: "",
-                vacancy.address?.street ?: "",
-                vacancy.address?.house ?: ""
-            ),
+            address = vacancy.address?.let {
+                ListAddressDomainModel(
+                    town = it.town ?: "",
+                    street = it.street ?: "",
+                    house = it.house ?: ""
+                )
+            } ?: ListAddressDomainModel("", "", ""),
             company = vacancy.company ?: "",
-            experience = ListExperienceDomainModel(
-                vacancy.experience?.previewText ?: "",
-                vacancy.experience?.text ?: ""
-            ),
+            experience = vacancy.experience?.let {
+                ListExperienceDomainModel(
+                    previewText = it.previewText ?: "",
+                    text = it.text ?: ""
+                )
+            } ?: ListExperienceDomainModel("", ""),
             publishedDate = vacancy.publishedDate ?: "",
             isFavorite = vacancy.isFavorite ?: false,
-            salary = ListSalaryDomainModel(
-                vacancy.salary?.full ?: "",
-                vacancy.salary?.short ?: ""
-            ),
+            salary = vacancy.salary?.let {
+                ListSalaryDomainModel(
+                    full = it.full ?: "",
+                    short = it.short ?: ""
+                )
+            } ?: ListSalaryDomainModel("", ""),
             schedules = vacancy.schedules.orEmpty().filterNotNull(),
             appliedNumber = vacancy.appliedNumber ?: 0,
             description = vacancy.description ?: "",

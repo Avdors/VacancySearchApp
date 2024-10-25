@@ -6,6 +6,7 @@ import com.volkov.listvacancy.data.model.DataModelListVacancyOffer
 import com.volkov.listvacancy.domain.model.ListButton
 import com.volkov.listvacancy.domain.model.ListOfferDomainModel
 
+// использую class так как передаю этот мапер в зависимость в di
 class ListVacOfferDataMaper {
     fun mapOfferToDomain(offer: DataModelListVacancyOffer): ListOfferDomainModel {
         return ListOfferDomainModel(

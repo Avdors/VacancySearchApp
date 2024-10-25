@@ -1,5 +1,5 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="add_letter">Добавить сопроводительное</string>
@@ -21,13 +21,12 @@
     <string name="letter">Ваше сопроводительное письмо</string>
 
     <string name="messages">Сообщения</string>
-    <string name="more">Еще %s</string>
+    <string name="more">Еще</string>
 
     <string name="now_browsing">Сейчас просматривают %s</string>
 
     <string name="posting_vacancies">Размещение вакансий и доступ к базе резюме</string>
     <string name="profile">Профиль</string>
-    <string name="published">Опубликовано %s</string>
 
     <string name="respons">Откликнуться</string>
     <string name="responses">Отклики</string>
@@ -43,7 +42,6 @@
 
     <string name="vacancy_for_you">"Вакансии для вас"</string>
     <string name="wrong_email_address">"Вы ввели неверный e-mail"</string>
-    <string name="wrong_kod">"Вы ввели неверные числа"</string>
 
     <string name="your_email">"*** ваш e-mail ***"</string>
     <string name="your_tasks">Ваши задачи</string>
@@ -54,4 +52,7 @@
     <string name="vacancy_one">%d вакансия</string>
     <string name="vacancy_few">%d вакансии</string>
     <string name="vacancy_many">%d вакансий</string>
+    <string name="in_progress">ЭТА ФУНКЦИЯ В РАЗАРАБОТКЕ</string>
+
+
 </resources>

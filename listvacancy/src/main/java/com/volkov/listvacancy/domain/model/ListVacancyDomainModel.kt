@@ -19,6 +19,6 @@ class ListVacancyDomainModel(
 
 }
 
-class ListAddressDomainModel(val town: String, val street: String, val house: String)
-class ListExperienceDomainModel(val previewText: String, val text: String)
-class ListSalaryDomainModel(val full: String, val short: String)
+data class ListAddressDomainModel(val town: String, val street: String, val house: String)
+data class ListExperienceDomainModel(val previewText: String, val text: String)
+data class ListSalaryDomainModel(val full: String, val short: String)

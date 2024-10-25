@@ -6,7 +6,7 @@ import com.volkov.listvacancy.domain.repository.ListVacancyRepository
 
 class ListVacancyUseCase(private val repository: ListVacancyRepository) {
 
-    suspend fun getVacancy(): List<ListVacancyDomainModel> {
+    suspend fun getVacancies(): List<ListVacancyDomainModel> {
         return repository.getVacancies()
     }
 
