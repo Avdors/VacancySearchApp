@@ -1,0 +1,62 @@
+{
+  "offers": [
+    {
+      "id": "near_vacancies",
+      "title": "Vacancies near you",
+      "link": "https://hh.ru/"
+    },
+    {
+      "id": "level_up_resume",
+      "title": "Get your resume up in the search",
+      "button": {
+        "text": "Upp"
+      },
+      "link": "https://hh.ru/mentors?from\u003dfooter_new\u0026hhtmFromLabel\u003dfooter_new\u0026hhtmFrom\u003dmain\u0026purposeId\u003d1"
+    },
+    {
+      "id": "temporary_job",
+      "title": "Temporary work or part-time work",
+      "link": "https://hh.ru/"
+    },
+    {
+      "title": "Useful articles and tips",
+      "link": "https://hh.ru/articles?hhtmFrom\u003dmain"
+    }
+  ],
+  "vacancies": [
+    {
+      "id": "15f88865-ae74-4b7c-9d81-b78334bb97db",
+      "lookingNumber": 1,
+      "title": "Product Designer",
+      "address": {
+        "town": "Minsk",
+        "street": "stree One",
+        "house": "5"
+      },
+      "company": "TravelLine",
+      "experience": {
+        "previewText": "Experience from 3 to 6 years",
+        "text": "Ages 3-6"
+      },
+      "publishedDate": "2024-02-02",
+      "isFavorite": false,
+      "salary": {
+        "full": "Income level not specified"
+      },
+      "schedules": [
+        "full employment",
+        "full day"
+      ],
+      "appliedNumber": 1,
+      "description": "At TravelLine, we develop a unified functional Platform for automating hotel business processes. Everything related to online booking and hotel room management is our business. More than 1.5 million guests book through our systems every month.\n\nWe are looking for a colleague to join our team of product designers on a B2B product.\nWe now have 10 product designers in our team who focus on B2B, B2C and B2E products.\nWhen you start out, you'll have a mentor to help you adjust to your new team.",
+      "responsibilities": "- Design B2B product interface: maintain and improve current solutions, maintain consistency\n\n- Understand the needs and pains of users, the logic of user interaction with the product, participate in the discovery phase\n\n- Create interactive prototypes\n\n- Conduct usability testing and solution implementation reviews\n\n- Work within the product team: communicate with designers, product and project managers, analysts, developers and testers.",
+      "questions": [
+        "Where is the place of employment located?",
+        "What's the work schedule?",
+        "Is the position open?",
+        "What's the pay?",
+        "How can I get in touch with you?"
+      ]
+    }
+  ]
+}

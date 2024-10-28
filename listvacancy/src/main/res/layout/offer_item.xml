@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="132dp"
+    android:layout_height="120dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="@dimen/dp4"
+    android:background="@drawable/back_grey1_corner12">
+
+    <ImageView
+        android:id="@+id/recommendation_icon"
+        android:layout_width="@dimen/dp32"
+        android:layout_height="@dimen/dp32"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp16"
+        android:background="@drawable/near_map_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/offer_title"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp12"
+        android:maxLines="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recommendation_icon"
+        tools:text="Варианты по типу вакансии" />
+
+    <TextView
+        android:id="@+id/offers_action_tv"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp12"
+        android:layout_marginBottom="@dimen/dp12"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/up_vacancy"
+        android:textColor="@color/green"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/offer_title"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context=".presentation.ListVacanciesFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp16" />
+
+    <FrameLayout
+        android:id="@+id/field_search_fl"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginEnd="@dimen/dp48"
+        android:background="@drawable/search_background"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            style="@style/RegularText.14size"
+            android:id="@+id/field_search_et"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:autofillHints=""
+            android:background="@null"
+            android:drawableStart="@drawable/search_icon"
+            android:drawablePadding="@dimen/dp8"
+            android:fontFamily="@font/sf_pro_regular"
+            android:gravity="center_vertical"
+            android:hint="@string/search_position"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dp8"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnPrimary"
+            android:textColorHint="@color/grey3"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/image_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp16"
+            android:background="@drawable/close_icon"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/quantity_vacancy"
+        style="@style/RegularText.14size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp24"
+        app:layout_constraintBottom_toTopOf="@+id/linear_recycler_vacancy"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/filter_imview"
+        tools:text="ПримерТекста"
+        android:text="ПримерТекста"
+        android:visibility="invisible"/>
+
+    <TextView
+        style="@style/RegularText.14size"
+        android:id="@+id/tw_accordance_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp24"
+        android:layout_marginEnd="@dimen/dp6"
+        android:textColor="@color/blue"
+        app:drawableEndCompat="@drawable/additional_filter"
+        app:layout_constraintBottom_toTopOf="@+id/linear_recycler_vacancy"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/filter_imview"
+        tools:text="По соответствию "
+        android:text="По соответствию "
+        android:visibility="invisible"/>
+
+
+
+    <ImageView
+        android:id="@+id/filter_imview"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/search_background"
+        android:src="@drawable/filter_icon"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_offer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp16"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/field_search_fl"
+        tools:listitem="@layout/offer_item"
+        />
+
+    <TextView
+        android:id="@+id/vacancy_tv"
+        style="@style/SemiboldText.20size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp24"
+        android:background="@android:color/transparent"
+        android:text="@string/vacancy_for_you"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/recycler_offer" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_recycler_vacancy"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/vacancy_tv"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_vacancy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/dp16"
+            tools:listitem="@layout/vacancy_item"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

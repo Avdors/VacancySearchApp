@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/more_vacancies_button"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/dp8"
+    android:layout_marginBottom="@dimen/dp8"
+    android:backgroundTint="@color/blue"
+    android:text="@string/more"
+    android:textColor="@color/white"
+    style="@style/RegularText.14size"
+    app:cornerRadius="@dimen/dp8">
+
+</Button>
+

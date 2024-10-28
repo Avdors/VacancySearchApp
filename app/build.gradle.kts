@@ -50,6 +50,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":core"))
+    implementation(project(":auth"))
+    implementation(project(":listvacancy"))
+    implementation(project(":cardvacancy"))
+    implementation(project(":favoritevacancy"))
+    implementation(project(":jobresponse"))
 
     implementation(libs.lifecycle.viewmodel)
     // Core Koin library

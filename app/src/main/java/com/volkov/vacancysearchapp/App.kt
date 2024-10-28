@@ -12,6 +12,7 @@ class App: Application() {
             androidLogger()
             androidContext(this@App)
             modules(com.volkov.core.di.KoinModule)
+            modules(com.volkov.listvacancy.di.listVacancyModule)
         }
     }
 }
