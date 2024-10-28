@@ -32,12 +32,14 @@ mockitocore = "5.11.0"
 mockkversion = "1.12.0"
 junit-jupiter = "5.11.0"
 truthversion = "1.1.5"
+androidxTest = "1.6.2"
 
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTest" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -74,6 +76,7 @@ koin-test_junit = { module = "io.insert-koin:koin-test-junit4", version.ref = "k
 
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxCoroutinesAndroid" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTestJunit"}
 mockito-core = {module = "org.mockito:mockito-core", version.ref = "mockitocore"}
 mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockitocore" }

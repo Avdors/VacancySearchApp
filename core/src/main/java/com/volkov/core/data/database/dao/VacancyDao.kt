@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.core.data.database.model.VacancyModelDataBase
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface VacancyDao {
@@ -14,6 +15,9 @@ interface VacancyDao {
 
     @Query("SELECT * FROM vacancies")
     suspend fun getAllVacancies(): List<VacancyModelDataBase>
+
+    @Query("SELECT * FROM vacancies")
+    fun getAllVacanciesFlow(): Flow<List<VacancyModelDataBase>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertVacancies(vacancies: List<VacancyModelDataBase>)

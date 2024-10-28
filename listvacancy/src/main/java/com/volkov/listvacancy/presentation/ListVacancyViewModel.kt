@@ -25,25 +25,26 @@ class ListVacancyViewModel(
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = _error
 
-    suspend fun loadVacancies() {
-        viewModelScope.launch() {
-            try {
-                // Получаем список Domain моделей через use case
-                val domainVacancies = listVacancyUseCase.getVacancies()
 
-                // Маппим Domain модели в UI модели
+    init {
+        viewModelScope.launch {
+            observeVacanciesFromDB()
+            loadOffers()
+        }
+    }
+
+    // смотрим за списком вакансий в БД, при загрузке из сети обновляем данные в БД
+    private fun observeVacanciesFromDB() {
+        viewModelScope.launch {
+            listVacancyUseCase.getVacanciesFromDB().collect { domainVacancies ->
                 val uiVacancies = ListVacancyMapper.mapToUIModelList(domainVacancies)
                 _vacancies.value = uiVacancies
-
-            } catch (e: Exception) {
-                _error.value = e.message
             }
         }
     }
 
     suspend fun loadOffers() {
-        viewModelScope.launch() {
-            try {
+        try {
                 val domainOffers = listVacancyUseCase.getOffers()
 
                 val uiOffers = domainOffers.map { domainModel ->
@@ -58,7 +59,6 @@ class ListVacancyViewModel(
             } catch (e: Exception) {
                 _error.value = e.message
             }
-        }
     }
 
     fun updateFavorites(vacancy: ListVacancyModel) {

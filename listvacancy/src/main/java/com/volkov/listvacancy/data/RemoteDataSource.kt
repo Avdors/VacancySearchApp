@@ -21,8 +21,8 @@ class RemoteDataSource(private val client: HttpClient) {
         val response = client.get {
             val url =
                 UrlProvider.getUrl("vacancies")  // в core лежит список адресов для подключения, при работе с feature, их можно подменять вручную на любой тестовый адрес
-            url(url)
-            Log.d("RemoteDataSource", "Requesting data from URL: $url")
+            url("https://drive.google.com/uc?export=download&id=1vMIv-cQR6dV-oEo2htuOhXMx5lp-FC-s")
+            //Log.d("RemoteDataSource", "Requesting data from URL: $url")
         }
 
         if (response.status.isSuccess()) {

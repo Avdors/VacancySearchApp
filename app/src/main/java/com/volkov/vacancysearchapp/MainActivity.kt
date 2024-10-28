@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        // Устанавливаем Toolbar как ActionBar
+        setSupportActionBar(binding?.toolbar)
+
         val navController = findNavController(R.id.nav_host_fragment)
 
         binding?.bottomNav?.setupWithNavController(navController)
@@ -28,8 +31,13 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-    }
 
+        // Загрузка данных
+//        lifecycleScope.launch() {
+//            listVacancyViewModel.loadVacancies()
+//            listVacancyViewModel.loadOffers()
+//        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         binding = null

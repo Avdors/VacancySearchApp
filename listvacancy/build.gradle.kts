@@ -42,8 +42,8 @@ dependencies {
     implementation(libs.material)
     testImplementation(libs.junit)
     testImplementation(libs.truth.truth)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    // androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.lifecycle.viewmodel)
 
     implementation(project(":core"))
@@ -69,6 +69,8 @@ dependencies {
     //coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.test)
+    // implementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     //fragment-ktx
     implementation(libs.androidx.fragment.ktx)
@@ -85,16 +87,18 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     //Unit test
-    implementation(libs.mockk)
+
+    //androidTestImplementation(libs.mockk)
+
     implementation(libs.kotlinx.coroutines.test)
     implementation(libs.kotlin.test.junit)
     implementation(libs.truth.truth)
 
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+//    androidTestImplementation(libs.androidx.junit)
+//    androidTestImplementation(libs.androidx.espresso.core)
     // Зависимость для работы с Ktor (если используете Ktor)
     androidTestImplementation(libs.ktor.client.android)
-    androidTestImplementation(libs.ktor.client.mock)
+//    androidTestImplementation(libs.ktor.client.mock)
     androidTestImplementation(libs.ktor.client.core)
     androidTestImplementation(libs.ktor.client.serialization)
     androidTestImplementation(libs.ktor.client.logging)
@@ -106,6 +110,22 @@ dependencies {
     // Для мокирования зависимостей
     testImplementation(libs.koin.test.junit)
     androidTestImplementation(libs.koin.test.junit)
+    //mokito для тестов
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.mockk.android)
+    testImplementation(libs.mockk)
+    //implementation(libs.mockk)
+
+
+    //androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.test.runner) // AndroidJUnitRunner
+    androidTestImplementation(libs.androidx.espresso.core)
+    //androidTestImplementation(libs.mockk.android) // MockK для Android тестов
+    //androidTestImplementation(libs.koin.test)
+    //androidTestImplementation(libs.koin.test.junit)
+    // androidTestImplementation(libs.ktor.client.android)
+    androidTestImplementation(libs.ktor.client.mock)
+
 
 
 }

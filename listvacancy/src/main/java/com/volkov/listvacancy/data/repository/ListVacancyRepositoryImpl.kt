@@ -1,5 +1,6 @@
 package com.volkov.listvacancy.data.repository
 
+import android.util.Log
 import com.volkov.listvacancy.data.LocalDataSource
 import com.volkov.listvacancy.data.RemoteDataSource
 import com.volkov.listvacancy.domain.mapper.ListVacOfferDataMaper
@@ -10,6 +11,8 @@ import com.volkov.listvacancy.domain.repository.ListVacancyRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class ListVacancyRepositoryImpl(
@@ -18,6 +21,24 @@ class ListVacancyRepositoryImpl(
     private val listVacancyDataMapper: ListVacancyDataMapper,
     private val listVacOfferDataMaper: ListVacOfferDataMaper
 ) : ListVacancyRepository {
+    override fun getVacanciesFromDB(): Flow<List<ListVacancyDomainModel>> {
+        return localDataSource.getVacanciesFlowFromDB()
+            .map { vacancies ->
+                vacancies.map { listVacancyDataMapper.mapToDomainFromDB(it) }
+            }
+        // Параллельно запускаем загрузку данных из сети для обновления кеша
+        launchVacancyNetworkLoad()
+    }
+
+    override suspend fun getVacanciesFromRemote(): List<ListVacancyDomainModel> {
+        launchVacancyNetworkLoad()
+        val cachedVacancies = localDataSource.getVacanciesFromDb().map { vacancy ->
+            listVacancyDataMapper.mapToDomainFromDB(vacancy)
+        }
+        return cachedVacancies
+
+    }
+
     override suspend fun getVacancies(): List<ListVacancyDomainModel> {
         // Сначала загружаем данные из кеша (БД) и возвращаем их
         // мапим из БД в доменную модель
@@ -37,7 +58,10 @@ class ListVacancyRepositoryImpl(
             while (retries > 0) {
                 try {
                     val response = remoteDataSource.getData()
-
+                    Log.d(
+                        "ListVacancyRepositoryImpl",
+                        "domainVacancies: ${response.vacancies?.size}"
+                    )
                     val vacancies = response.vacancies?.filterNotNull()?.map { vacancy ->
                         listVacancyDataMapper.mapToDomain(vacancy)
                     } ?: emptyList()
@@ -48,6 +72,10 @@ class ListVacancyRepositoryImpl(
                                 it
                             )
                         })
+                        Log.d(
+                            "ListVacancyRepositoryImpl",
+                            "Данные из сети успешно загружены и сохранены в кеш"
+                        )
                     }
                     // Если успешно, выходим из цикла
                     break
