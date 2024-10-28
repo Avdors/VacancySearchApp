@@ -92,6 +92,7 @@ class ListVacancyRepositoryImpl(
         }
     }
 
+
     override suspend fun getOffers(): List<ListOfferDomainModel> {
         // Сразу загружаем данные из кеша (БД)
         // маппим из БД в доменную модель
