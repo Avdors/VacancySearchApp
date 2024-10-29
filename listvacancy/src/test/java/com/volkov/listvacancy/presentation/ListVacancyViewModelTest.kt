@@ -20,101 +20,88 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.runs
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ListVacancyViewModelTest {
 
-    // Моки для use case
     private lateinit var listVacancyUseCase: ListVacancyUseCase
     private lateinit var favoriteUseCase: FavoriteUseCase
-
-    // ViewModel
     private lateinit var viewModel: ListVacancyViewModel
-
-    private val testDispatcher = UnconfinedTestDispatcher()
+    private val testDispatcher = StandardTestDispatcher()
 
     @Before
     fun setUp() {
+        Dispatchers.setMain(testDispatcher)
         listVacancyUseCase = mockk()
         favoriteUseCase = mockk()
 
-        viewModel = ListVacancyViewModel(listVacancyUseCase, favoriteUseCase)
+        // Устанавливаем поведение для getVacanciesFromDB, если оно вызывается при инициализации
+        val fakeVacanciesFlow = flowOf(
+            listOf(
+                ListVacancyDomainModel(
+                    id = "1",
+                    lookingNumber = 100,
+                    title = "Vacancy 1",
+                    address = ListAddressDomainModel("City", "Street", "1"),
+                    company = "Company 1",
+                    experience = ListExperienceDomainModel("1 year", "2 years"),
+                    publishedDate = "2024-10-05",
+                    isFavorite = false,
+                    salary = ListSalaryDomainModel("1000 USD", "1K"),
+                    schedules = emptyList(),
+                    appliedNumber = 10,
+                    description = "description",
+                    responsibilities = "responsibilities",
+                    questions = emptyList()
+                )
+            )
+        )
+        coEvery { listVacancyUseCase.getVacanciesFromDB() } returns fakeVacanciesFlow
 
-        Dispatchers.setMain(testDispatcher)
+        // Настройка моков для getOffers
+        coEvery { listVacancyUseCase.getOffers() } returns listOf(
+            ListOfferDomainModel("1", "Offer 1", "link1", ListButton("Button 1"))
+        )
+
+        viewModel = ListVacancyViewModel(listVacancyUseCase, favoriteUseCase)
     }
 
     @After
     fun tearDown() {
         Dispatchers.resetMain()
-
     }
 
     @Test
     fun `test loadVacancies successfully`() = runTest {
-        // Создаем фейковые данные для моков
-        val fakeVacancies = listOf(
-            ListVacancyDomainModel(
-                "1",
-                100,
-                "Vacancy 1",
-                ListAddressDomainModel("City", "Street", "1"),
-                "Company 1",
-                ListExperienceDomainModel("1 year", "2 years"),
-                "2024-10-05",
-                false,
-                ListSalaryDomainModel("1000 USD", "1K"),
-                emptyList(),
-                10,
-                "description",
-                "responsibilities",
-                emptyList()
-            )
-        )
+        advanceUntilIdle()
 
-        // Задаем поведение для listVacancyUseCase
-        coEvery { listVacancyUseCase.getVacancies() } returns fakeVacancies
-
-        // Вызываем метод загрузки вакансий
-        viewModel.loadVacancies()
-
-        // Проверяем, что результат успешно загружен и маппинг данных выполнен
-        val uiVacancies = viewModel.vacancies.first()
+        // Проверяем, что список вакансий обновился
+        val uiVacancies = viewModel.vacancies.value
         assertThat(uiVacancies).isNotEmpty()
         assertThat(uiVacancies[0].id).isEqualTo("1")
 
-        // Проверяем, что мок вызван
-        coVerify { listVacancyUseCase.getVacancies() }
+        coVerify { listVacancyUseCase.getVacanciesFromDB() }
     }
-
 
     @Test
     fun `test loadOffers successfully`() = runTest {
-        // Создаем фейковые данные для моков
-        val fakeOffers = listOf(
-            ListOfferDomainModel("1", "Offer 1", "link1", ListButton("Button 1"))
-        )
-
-        // Задаем поведение для listVacancyUseCase
-        coEvery { listVacancyUseCase.getOffers() } returns fakeOffers
-
-        // Вызываем метод загрузки предложений
         viewModel.loadOffers()
+        advanceUntilIdle()
 
-        // Проверяем, что результат успешно загружен и маппинг данных выполнен
-        val uiOffers = viewModel.offers.first()
+        val uiOffers = viewModel.offers.value
         assertThat(uiOffers).isNotEmpty()
         assertThat(uiOffers[0].id).isEqualTo("1")
 
-        // Проверяем, что мок вызван
         coVerify { listVacancyUseCase.getOffers() }
     }
 
@@ -137,20 +124,17 @@ class ListVacancyViewModelTest {
             responsibilities = "responsibilities",
             questions = emptyList()
         )
-        // Задаем начальный список вакансий в ViewModel
         viewModel._vacancies.value = listOf(vacancy)
 
         // Настраиваем поведение для favoriteUseCase
         coEvery { favoriteUseCase.addToFavorite(any()) } just runs
 
-        // Вызываем метод добавления в избранное
         viewModel.addToFavorites(vacancy)
+        advanceUntilIdle()
 
-        // Проверяем, что статус обновился на избранное
-        val updatedVacancies = viewModel.vacancies.first()
+        val updatedVacancies = viewModel.vacancies.value
         assertThat(updatedVacancies[0].isFavorite).isTrue()
 
-        // Проверяем, что useCase вызван с правильными данными
         coVerify { favoriteUseCase.addToFavorite(any()) }
     }
 }

@@ -13,6 +13,7 @@ class App: Application() {
             androidContext(this@App)
             modules(com.volkov.core.di.KoinModule)
             modules(com.volkov.listvacancy.di.listVacancyModule)
+            modules(com.volkov.favoritevacancy.di.favoriteVacancyModule)
         }
     }
 }
