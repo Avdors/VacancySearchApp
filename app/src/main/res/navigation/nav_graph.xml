@@ -28,6 +28,22 @@
         android:name="com.volkov.core.presentation.InProgressFragment"
         android:label="InProgressFragment"
         tools:layout="@layout/fragment_in_progress" />
+    <!-- Fragment для карточки вакансии -->
+    <fragment
+        android:id="@+id/cardVacancyFragment"
+        android:name="com.volkov.cardvacancy.presentation.CardVacancyFragment"
+        android:label="CardVacancyFragment"
+        tools:layout="@layout/fragment_card_vacancy">
+        <argument
+            android:name="vacancyId"
+            app:argType="string" />
+        <!-- Аргумент для fromFavorites -->
+        <argument
+            android:name="fromFavorites"
+            android:defaultValue="false"
+            app:argType="boolean" /> <!-- По умолчанию false, если не указано -->
+        <deepLink app:uri="app://vacancy.com/vacancy/{vacancyId}?fromFavorites={fromFavorites}" />
+    </fragment>
 
 
 </navigation>
