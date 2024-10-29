@@ -2,14 +2,18 @@ package com.volkov.vacancysearchapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.volkov.listvacancy.presentation.ListVacancyViewModel
+import com.volkov.favoritevacancy.presentation.FavoriteVacancyViewModel
 import com.volkov.vacancysearchapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-    private val listVacancyViewModel: ListVacancyViewModel by viewModel()
+    //private val listVacancyViewModel: ListVacancyViewModel by viewModel()
+    private val favoriteVacancyViewModel: FavoriteVacancyViewModel by viewModel()
     private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +37,28 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        lifecycleScope.launch(Dispatchers.IO) {
+            favoriteVacancyViewModel.vacancies.collect { favorites ->
+                updateFavoritesBadge(favorites.size)
+            }
+        }
+
     }
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+
+    private fun updateFavoritesBadge(count: Int) {
+        val badge = binding?.bottomNav?.getOrCreateBadge(R.id.favoriteVacanciesFragment)
+        if (count > 0) {
+            badge?.isVisible = true
+            badge?.number = count
+            badge?.backgroundColor =
+                resources.getColor(R.color.red, null) // Устанавливаем красный фон
+        } else {
+            badge?.isVisible = false
+        }
     }
 }
