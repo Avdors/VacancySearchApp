@@ -27,16 +27,12 @@ class MainActivity : AppCompatActivity() {
         binding?.bottomNav?.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.listVacanciesFragment -> navController.navigate(R.id.listVacanciesFragment)
-                else -> navController.navigate(R.id.listVacanciesFragment)
+                R.id.favoriteVacanciesFragment -> navController.navigate(R.id.favoriteVacanciesFragment)
+                else -> navController.navigate(R.id.inProgressFragment)
             }
             true
         }
 
-        // Загрузка данных
-//        lifecycleScope.launch() {
-//            listVacancyViewModel.loadVacancies()
-//            listVacancyViewModel.loadOffers()
-//        }
     }
     override fun onDestroy() {
         super.onDestroy()

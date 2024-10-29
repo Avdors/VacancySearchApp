@@ -16,5 +16,18 @@
 
     </fragment>
 
+    <!-- Fragment для избранных вакансий -->
+    <fragment
+        android:id="@+id/favoriteVacanciesFragment"
+        android:name="com.volkov.favoritevacancy.presentation.FavoriteVacanciesFragment"
+        android:label="FavoriteVacanciesFragment"
+        tools:layout="@layout/fragment_favorite_vacancies" />
+    <!-- Fragment заглушка для неготовых разделов -->
+    <fragment
+        android:id="@+id/inProgressFragment"
+        android:name="com.volkov.core.presentation.InProgressFragment"
+        android:label="InProgressFragment"
+        tools:layout="@layout/fragment_in_progress" />
+
 
 </navigation>

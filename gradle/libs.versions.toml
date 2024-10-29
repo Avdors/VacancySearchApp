@@ -33,6 +33,7 @@ mockkversion = "1.12.0"
 junit-jupiter = "5.11.0"
 truthversion = "1.1.5"
 androidxTest = "1.6.2"
+turbineversion = "0.12.1"
 
 
 [libraries]
@@ -85,6 +86,8 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockkversion" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkversion" }
 mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "junit-jupiter" }
 truth-truth = { group = "com.google.truth", name = "truth", version.ref = "truthversion" }
+
+app-cash-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbineversion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
