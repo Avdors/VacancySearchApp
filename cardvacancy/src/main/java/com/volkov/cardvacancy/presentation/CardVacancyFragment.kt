@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +21,7 @@ class CardVacancyFragment : Fragment() {
     private val сardVacancyViewModel: CardVacancyViewModel by viewModel()
     lateinit var binding: FragmentCardVacancyBinding
     private var vacancyId: String? = ""
+    private lateinit var uiHandler: CardVacancyUIHandler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +29,7 @@ class CardVacancyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCardVacancyBinding.inflate(inflater, container, false)
+        uiHandler = CardVacancyUIHandler(binding)
         return binding.root
     }
 
@@ -51,7 +51,12 @@ class CardVacancyFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 сardVacancyViewModel.vacancy.collect { vacancy ->
-                    vacancy?.let { updateUI(vacancy) }
+                    vacancy?.let {
+                        uiHandler.updateUI(it)
+                        uiHandler.updateQuestions(it.questions) { question ->
+                            openRespons(question)
+                        }
+                    }
                 }
             }
         }
@@ -60,7 +65,7 @@ class CardVacancyFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 сardVacancyViewModel.isFavorite.collect { isFavorite ->
-                    updateFavoriteIcon(isFavorite)
+                    uiHandler.updateFavoriteIcon(isFavorite)
                 }
             }
         }
@@ -118,7 +123,7 @@ class CardVacancyFragment : Fragment() {
         binding.cardTaskInfo.text = vacancy.responsibilities
 
         // Обновляем вопросы
-        updateQuestions(vacancy.questions)
+        //updateQuestions(vacancy.questions)
     }
 
     // Функция для обновления состояния "избранное"
@@ -134,38 +139,38 @@ class CardVacancyFragment : Fragment() {
 
 
     // Функция для обновления списка вопросов
-    private fun updateQuestions(questions: List<String>?) {
-        val cardListQuestionLayout = binding.cardListQuestion
-        cardListQuestionLayout.removeAllViews()
-        questions?.forEach { question ->
-            val button = Button(requireContext()).apply {
-                text = question
-                setBackgroundResource(R.drawable.back_grey2_corner24)
-                setTextAppearance(R.style.RegularText_14size)
-                layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    setMargins(
-                        0,
-                        resources.getDimensionPixelSize(R.dimen.dp16),
-                        0,
-                        0
-                    )
-                }
-                setPadding(
-                    resources.getDimensionPixelSize(R.dimen.dp16),
-                    resources.getDimensionPixelSize(R.dimen.dp8),
-                    resources.getDimensionPixelSize(R.dimen.dp16),
-                    resources.getDimensionPixelSize(R.dimen.dp8)
-                )
-                transformationMethod = null
-                setOnClickListener {
-                    openRespons(question)
-                }
-            }
-            cardListQuestionLayout.addView(button)
-        }
-    }
+//    private fun updateQuestions(questions: List<String>?) {
+//        val cardListQuestionLayout = binding.cardListQuestion
+//        cardListQuestionLayout.removeAllViews()
+//        questions?.forEach { question ->
+//            val button = Button(requireContext()).apply {
+//                text = question
+//                setBackgroundResource(R.drawable.back_grey2_corner24)
+//                setTextAppearance(R.style.RegularText_14size)
+//                layoutParams = LinearLayout.LayoutParams(
+//                    LinearLayout.LayoutParams.WRAP_CONTENT,
+//                    LinearLayout.LayoutParams.WRAP_CONTENT
+//                ).apply {
+//                    setMargins(
+//                        0,
+//                        resources.getDimensionPixelSize(R.dimen.dp16),
+//                        0,
+//                        0
+//                    )
+//                }
+//                setPadding(
+//                    resources.getDimensionPixelSize(R.dimen.dp16),
+//                    resources.getDimensionPixelSize(R.dimen.dp8),
+//                    resources.getDimensionPixelSize(R.dimen.dp16),
+//                    resources.getDimensionPixelSize(R.dimen.dp8)
+//                )
+//                transformationMethod = null
+//                setOnClickListener {
+//                    openRespons(question)
+//                }
+//            }
+//            cardListQuestionLayout.addView(button)
+//        }
+//    }
 
 }

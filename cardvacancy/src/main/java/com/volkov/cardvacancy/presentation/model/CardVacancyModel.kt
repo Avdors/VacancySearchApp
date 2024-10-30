@@ -1,6 +1,6 @@
 package com.volkov.cardvacancy.presentation.model
 
-class CardVacancyModel(
+data class CardVacancyModel(
     val id: String,
     val lookingNumber: Int,
     val title: String,
@@ -19,6 +19,6 @@ class CardVacancyModel(
 
 }
 
-class CardAddressModel(val town: String, val street: String, val house: String)
-class CardExperienceModel(val previewText: String, val text: String)
-class CardSalaryModel(val full: String, val short: String)
+data class CardAddressModel(val town: String, val street: String, val house: String)
+data class CardExperienceModel(val previewText: String, val text: String)
+data class CardSalaryModel(val full: String, val short: String)
