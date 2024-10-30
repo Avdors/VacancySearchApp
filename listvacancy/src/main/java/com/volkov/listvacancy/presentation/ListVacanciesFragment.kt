@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.volkov.core.utils.SpacesItemDecoration
@@ -59,7 +60,14 @@ class ListVacanciesFragment : Fragment() {
         // Создам адаптер для вакансий с логикой обработки кнопки "Еще вакансий"
         vacancyAdapter = ListVacancyAdapter(
             emptyList(),
-            onVacancyClick = { vacancy -> },
+            onVacancyClick = { vacancy ->
+                // Переход к CardVacancyFragment
+                val vacancyId = vacancy.id
+                val isFromFavorites = false // Передаем информацию, что это вызов из избранного
+                val deepLinkUri =
+                    Uri.parse("app://vacancy.com/vacancy/$vacancyId?fromFavorites=$isFromFavorites")
+                findNavController().navigate(deepLinkUri)
+            },
             onFavoriteClick = { vacancy ->
                 jobsViewModel.updateFavorites(vacancy = vacancy)
                 vacancyAdapter.updateVacancies(

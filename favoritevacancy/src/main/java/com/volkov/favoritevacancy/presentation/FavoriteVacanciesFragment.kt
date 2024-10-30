@@ -1,11 +1,13 @@
 package com.volkov.favoritevacancy.presentation
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.volkov.core.utils.SpacesItemDecoration
 import com.volkov.core.utils.WordDeclension
@@ -45,6 +47,11 @@ class FavoriteVacanciesFragment : Fragment() {
             emptyList(),
             onVacancyClick = { vacancy ->
                 // Переход к CardVacancyFragment
+                val vacancyId = vacancy.id
+                val isFromFavorites = true // Передаем информацию, что это вызов из избранного
+                val deepLinkUri =
+                    Uri.parse("app://vacancy.com/vacancy/$vacancyId?fromFavorites=$isFromFavorites")
+                findNavController().navigate(deepLinkUri)
 
             },
             // клик по кнопке избранное
