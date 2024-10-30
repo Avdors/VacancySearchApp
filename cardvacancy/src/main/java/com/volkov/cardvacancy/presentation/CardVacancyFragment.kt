@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.volkov.cardvacancy.R
 import com.volkov.cardvacancy.databinding.FragmentCardVacancyBinding
 import com.volkov.cardvacancy.presentation.model.CardVacancyModel
+import com.volkov.jobresponse.presentation.ResponsDialogFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -89,7 +90,12 @@ class CardVacancyFragment : Fragment() {
     }
 
     private fun openRespons(question: String = "") {
-
+        val responseDialog = ResponsDialogFragment()
+        val bundle = Bundle().apply {
+            putString("questionText", question)
+        }
+        responseDialog.arguments = bundle
+        responseDialog.show(requireActivity().supportFragmentManager, "ResponsDialogFragment")
     }
 
     // Функция для обновления UI вакансии

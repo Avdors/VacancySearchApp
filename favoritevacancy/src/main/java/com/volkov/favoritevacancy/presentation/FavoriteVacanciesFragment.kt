@@ -14,6 +14,7 @@ import com.volkov.core.utils.WordDeclension
 import com.volkov.favoritevacancy.R
 import com.volkov.favoritevacancy.databinding.FragmentFavoriteVacanciesBinding
 import com.volkov.favoritevacancy.presentation.adapter.FavoriteVacancyAdapter
+import com.volkov.jobresponse.presentation.ResponsDialogFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,7 +66,8 @@ class FavoriteVacanciesFragment : Fragment() {
             },
 
             onApplyClick = { vacancy ->
-
+                val responseDialog = ResponsDialogFragment()
+                responseDialog.show(requireActivity().supportFragmentManager, "ResponseDialog")
             }
         )
         vacancyRecyclerView?.adapter = vacancyAdapter

@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
 
     implementation(project(":core"))
+    implementation(project(":jobresponse"))
     // Core Koin library
     implementation(libs.koin.core)
     // Koin AndroidX support

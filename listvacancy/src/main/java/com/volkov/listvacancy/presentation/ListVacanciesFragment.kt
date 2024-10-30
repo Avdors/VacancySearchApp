@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.volkov.core.utils.SpacesItemDecoration
 import com.volkov.core.utils.WordDeclension
+import com.volkov.jobresponse.presentation.ResponsDialogFragment
 import com.volkov.listvacancy.R
 import com.volkov.listvacancy.databinding.FragmentListVacanciesBinding
 import com.volkov.listvacancy.presentation.adapter.ListVacOfferAdapter
@@ -104,7 +105,10 @@ class ListVacanciesFragment : Fragment() {
 
                 }
             },
-            onApplyClick = { vacancy -> }
+            onApplyClick = { vacancy ->
+                val responseDialog = ResponsDialogFragment()
+                responseDialog.show(requireActivity().supportFragmentManager, "ResponseDialog")
+            }
         )
         vacancyRecyclerView?.adapter = vacancyAdapter
 
