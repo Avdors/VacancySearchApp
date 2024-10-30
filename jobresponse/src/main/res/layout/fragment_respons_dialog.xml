@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".presentation.ResponsDialogFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp16" />
+
+    <ImageView
+        android:id="@+id/resume_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginEnd="@dimen/dp16"
+        android:src="@drawable/response_icon"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/resume_text"
+        style="@style/RegularText.14size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:text="@string/cv"
+        android:textColor="@color/grey3"
+        app:layout_constraintStart_toEndOf="@id/resume_icon"
+        app:layout_constraintTop_toTopOf="@id/resume_icon" />
+
+    <TextView
+        android:id="@+id/job_title_text"
+        style="@style/MediumText.16size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:text="@string/ui_ux"
+        app:layout_constraintBottom_toBottomOf="@id/resume_icon"
+        app:layout_constraintStart_toEndOf="@id/resume_icon"
+        app:layout_constraintTop_toBottomOf="@id/resume_text"
+        tools:text="@string/ui_ux" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@color/grey2"
+        app:layout_constraintEnd_toEndOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/resume_icon" />
+
+    <EditText
+        android:id="@+id/letter_et"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp64"
+        android:layout_marginTop="@dimen/dp16"
+        android:autofillHints=""
+        android:background="@null"
+        android:drawablePadding="@dimen/dp8"
+        android:fontFamily="@font/sf_pro_regular"
+        android:gravity="top|start"
+        android:hint="@string/letter"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textColor="?attr/colorOnPrimary"
+        android:textColorHint="@color/grey3"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/add_cover_letter_text"
+        style="@style/SemiboldText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp32"
+        android:layout_marginBottom="@dimen/dp16"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/add_letter"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/apply_button"
+        app:layout_constraintEnd_toEndOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        tools:text="@string/add_letter" />
+
+
+    <Button
+        android:id="@+id/apply_button"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginBottom="@dimen/dp16"
+        android:backgroundTint="@color/green"
+        android:text="@string/respons"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="@dimen/dp8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/letter_et"
+        tools:text="@string/respons" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,6 +48,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":cardvacancy"))
+    implementation(project(":jobresponse"))
     // Core Koin library
     implementation(libs.koin.core)
     // Koin AndroidX support
