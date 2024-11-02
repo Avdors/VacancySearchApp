@@ -16,7 +16,7 @@ class ListVacancyViewModel(
     private val favoriteUseCase: FavoriteUseCase
 ) : ViewModel() {
     //не private чтобы в тестах добавить вакансию в _vacancies
-    val _vacancies = MutableStateFlow<List<ListVacancyModel>>(emptyList())
+    private val _vacancies = MutableStateFlow<List<ListVacancyModel>>(emptyList())
     val vacancies: StateFlow<List<ListVacancyModel>> = _vacancies
 
     private val _offers = MutableStateFlow<List<ListOfferModel>>(emptyList())

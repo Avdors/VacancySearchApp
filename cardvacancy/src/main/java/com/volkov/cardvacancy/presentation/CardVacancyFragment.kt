@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.volkov.cardvacancy.R
 import com.volkov.cardvacancy.databinding.FragmentCardVacancyBinding
-import com.volkov.cardvacancy.presentation.model.CardVacancyModel
 import com.volkov.jobresponse.presentation.ResponsDialogFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CardVacancyFragment : Fragment() {
     private var isFavoriteVacancy: Boolean = false
     private val сardVacancyViewModel: CardVacancyViewModel by viewModel()
-    lateinit var binding: FragmentCardVacancyBinding
+    private var binding: FragmentCardVacancyBinding? = null
     private var vacancyId: String? = ""
     private lateinit var uiHandler: CardVacancyUIHandler
 
@@ -30,8 +28,8 @@ class CardVacancyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCardVacancyBinding.inflate(inflater, container, false)
-        uiHandler = CardVacancyUIHandler(binding)
-        return binding.root
+        uiHandler = CardVacancyUIHandler(binding!!)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,17 +70,17 @@ class CardVacancyFragment : Fragment() {
         }
 
         // Назад
-        binding.cardBackArrow.setOnClickListener {
+        binding?.cardBackArrow?.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
         // кнопка "Избранное"
-        binding.cardFavorit.setOnClickListener {
+        binding?.cardFavorit?.setOnClickListener {
             сardVacancyViewModel.toggleFavorite()
         }
 
         // Откликнутся
-        binding.responsButton.setOnClickListener {
+        binding?.responsButton?.setOnClickListener {
             //val vacancyId = vacancy.id
             openRespons()
         }
@@ -98,85 +96,10 @@ class CardVacancyFragment : Fragment() {
         responseDialog.show(requireActivity().supportFragmentManager, "ResponsDialogFragment")
     }
 
-    // Функция для обновления UI вакансии
-    private fun updateUI(vacancy: CardVacancyModel) {
-        binding.cardVacancyTitle.text = vacancy.title
-        binding.cardVacancySalary.text = vacancy.salary.full
-        binding.cardVacancyExperience.text = "Требуемый опыт: ${vacancy.experience.text}"
-        binding.cardVacancyPublishedDate.text = vacancy.schedules
-            .mapIndexed { index, schedule ->
-                if (index == 0) schedule.replaceFirstChar { char -> char.uppercaseChar() }
-                else schedule
-            }
-            .joinToString(", ")
-
-        if (vacancy.appliedNumber != null) {
-            binding.eyeFirstLine.text = "${vacancy.appliedNumber} человек уже откликнулись"
-        } else {
-            binding.eyeFirstLine.visibility = View.GONE
-        }
-
-        if (vacancy.lookingNumber != null) {
-            binding.secondLine.text = "${vacancy.lookingNumber} человека сейчас смотрят"
-        } else {
-            binding.secondLine.visibility = View.GONE
-        }
-
-        binding.cardCompany.text = vacancy.company
-        binding.cardAdress.text =
-            "${vacancy.address.town}, ${vacancy.address.street}, ${vacancy.address.house}"
-        binding.cardDescription.text = vacancy.description
-        binding.cardTaskInfo.text = vacancy.responsibilities
-
-        // Обновляем вопросы
-        //updateQuestions(vacancy.questions)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
-    // Функция для обновления состояния "избранное"
-    private fun updateFavoriteIcon(isFavorite: Boolean) {
-        isFavoriteVacancy = isFavorite
-        val favoriteIconRes = if (isFavorite) {
-            R.drawable.fill_heart_icon
-        } else {
-            R.drawable.heart_icon
-        }
-        binding.cardFavorit.setImageResource(favoriteIconRes)
-    }
-
-
-    // Функция для обновления списка вопросов
-//    private fun updateQuestions(questions: List<String>?) {
-//        val cardListQuestionLayout = binding.cardListQuestion
-//        cardListQuestionLayout.removeAllViews()
-//        questions?.forEach { question ->
-//            val button = Button(requireContext()).apply {
-//                text = question
-//                setBackgroundResource(R.drawable.back_grey2_corner24)
-//                setTextAppearance(R.style.RegularText_14size)
-//                layoutParams = LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.WRAP_CONTENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT
-//                ).apply {
-//                    setMargins(
-//                        0,
-//                        resources.getDimensionPixelSize(R.dimen.dp16),
-//                        0,
-//                        0
-//                    )
-//                }
-//                setPadding(
-//                    resources.getDimensionPixelSize(R.dimen.dp16),
-//                    resources.getDimensionPixelSize(R.dimen.dp8),
-//                    resources.getDimensionPixelSize(R.dimen.dp16),
-//                    resources.getDimensionPixelSize(R.dimen.dp8)
-//                )
-//                transformationMethod = null
-//                setOnClickListener {
-//                    openRespons(question)
-//                }
-//            }
-//            cardListQuestionLayout.addView(button)
-//        }
-//    }
 
 }

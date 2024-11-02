@@ -51,6 +51,7 @@ class ListVacanciesFragment : Fragment() {
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.dp8)
         vacancyRecyclerView?.addItemDecoration(SpacesItemDecoration(spacingInPixels))
 
+
         // Инициализация адаптера
         offerAdapter = ListVacOfferAdapter(emptyList()) { link ->
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
@@ -164,10 +165,9 @@ class ListVacanciesFragment : Fragment() {
 
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
-
-
 }

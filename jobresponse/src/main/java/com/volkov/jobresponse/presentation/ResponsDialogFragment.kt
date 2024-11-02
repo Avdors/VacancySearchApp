@@ -9,7 +9,7 @@ import com.volkov.jobresponse.databinding.FragmentResponsDialogBinding
 
 
 class ResponsDialogFragment : BottomSheetDialogFragment() {
-    private lateinit var binding: FragmentResponsDialogBinding
+    private var binding: FragmentResponsDialogBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,7 +17,7 @@ class ResponsDialogFragment : BottomSheetDialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentResponsDialogBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,28 +25,33 @@ class ResponsDialogFragment : BottomSheetDialogFragment() {
         // Получаем аргумент questionText
         val questionText = arguments?.getString("questionText")
 
-        binding.addCoverLetterText.setOnClickListener { view ->
+        binding?.addCoverLetterText?.setOnClickListener { view ->
             view.visibility = View.GONE
-            binding.letterEt.visibility = View.VISIBLE
+            binding?.letterEt?.visibility = View.VISIBLE
 
         }
 
-        binding.applyButton.setOnClickListener {
+        binding?.applyButton?.setOnClickListener {
             dismiss()
         }
 
 
         // Если questionText передан, то делаем поле видимым и подставляем текст
         if (!questionText.isNullOrEmpty()) {
-            binding.letterEt.visibility = View.VISIBLE
-            binding.addCoverLetterText.visibility = View.GONE
-            binding.letterEt.setText(questionText)
+            binding?.letterEt?.visibility = View.VISIBLE
+            binding?.addCoverLetterText?.visibility = View.GONE
+            binding?.letterEt?.setText(questionText)
         } else {
             // Если вопрос не передан, прячем поле
-            binding.letterEt.visibility = View.GONE
-            binding.addCoverLetterText.visibility = View.VISIBLE
+            binding?.letterEt?.visibility = View.GONE
+            binding?.addCoverLetterText?.visibility = View.VISIBLE
         }
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
 }
