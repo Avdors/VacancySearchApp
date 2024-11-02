@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context=".presentation.LoginFirstFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/LeftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/RightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp16" />
+
+    <TextView
+        android:id="@+id/login_title_tv"
+        style="@style/SemiboldText.20size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp64"
+        android:text="@string/login_lk"
+
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_search_work"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp64"
+        android:background="@drawable/back_grey1_corner12"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/dp4"
+        app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/login_title_tv">
+
+        <TextView
+            android:id="@+id/work_search_tv"
+            style="@style/MediumText.16size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp16"
+            android:paddingTop="@dimen/dp24"
+            android:text="@string/search_work" />
+
+        <FrameLayout
+            android:id="@+id/mail_frame"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:background="@drawable/back_grey2_corner8">
+
+            <EditText
+                android:id="@+id/email_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp32"
+                android:autofillHints=""
+                android:background="@null"
+                android:drawableStart="@drawable/responses_icon"
+                android:drawablePadding="@dimen/dp8"
+                android:fontFamily="@font/sf_pro_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/email"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingStart="@dimen/dp8"
+                android:singleLine="true"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnPrimary"
+                android:textColorHint="@color/grey3"
+                app:layout_constraintEnd_toStartOf="@id/RightGuideline"
+                tools:ignore="RtlSymmetry" />
+
+
+            <ImageView
+                android:id="@+id/email_clear_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginStart="@dimen/dp8"
+                android:layout_marginEnd="@dimen/dp16"
+                android:background="@drawable/close_icon"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+                app:layout_constraintTop_toTopOf="@+id/mail_frame"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/error_email"
+            style="@style/RegularText.14size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:fontFamily="@font/sf_pro_regular"
+            android:text="@string/wrong_email_address"
+            android:textColor="@color/red"
+            android:textSize="@dimen/sp12"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/mail_frame"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp8">
+
+            <Button
+                android:id="@+id/email_continue_bt"
+                style="@style/RegularText.14size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp6"
+                android:layout_marginBottom="@dimen/dp6"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue"
+                android:enabled="false"
+                android:text="@string/continue_str"
+                app:cornerRadius="@dimen/dp8"
+
+                />
+
+            <Button
+                android:id="@+id/email_login_bt"
+                style="@style/RegularText.14size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp6"
+                android:layout_marginBottom="@dimen/dp6"
+                android:layout_weight="1"
+
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/login_password"
+                android:textColor="@color/blue"
+                app:cornerRadius="@dimen/dp8"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_layout_search"
+                app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+                app:layout_constraintStart_toEndOf="@+id/email_continue_bt"
+                app:layout_constraintTop_toBottomOf="@+id/mail_frame" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_vacancy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/back_grey1_corner12"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/dp4"
+        app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/ll_search_work">
+
+        <TextView
+            android:id="@+id/search_people"
+            style="@style/MediumText.16size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingStart="@dimen/dp16"
+            android:paddingTop="@dimen/dp24"
+            android:text="@string/search_people" />
+
+        <TextView
+            android:id="@+id/posting_vacancies_tv"
+            style="@style/RegularText.14size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp16"
+            android:paddingTop="@dimen/dp8"
+            android:text="@string/posting_vacancies" />
+
+        <Button
+            android:id="@+id/i_find_bt"
+            style="@style/RegularText.14size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:layout_marginBottom="@dimen/dp24"
+            android:backgroundTint="@color/green"
+            android:text="@string/i_find_people"
+            app:cornerRadius="@dimen/dp24" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
