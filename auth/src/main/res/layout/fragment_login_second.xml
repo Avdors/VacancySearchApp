@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context=".presentation.LoginSecondFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/LeftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/RightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp16" />
+
+    <TextView
+        android:id="@+id/send_mail"
+        style="@style/SemiboldText.20size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp162"
+
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Отправили код на example@mail.ru" />
+
+    <TextView
+        android:id="@+id/posting_vacancies_tv"
+        style="@style/MediumText.16size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="@dimen/dp64"
+        android:paddingTop="@dimen/dp8"
+        android:text="@string/enter_code"
+        app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/send_mail" />
+
+    <TextView
+        android:id="@+id/error_kod"
+        style="@style/RegularText.14size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/sf_pro_regular"
+        android:text="@string/wrong_kod"
+        android:textColor="@color/red"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/sp12"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/posting_vacancies_tv"
+        tools:visibility="visible" />
+
+
+    <EditText
+        android:id="@+id/et1"
+        style="@style/RegularText.16size"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/back_grey1_corner8"
+        android:gravity="center"
+        android:inputType="numberPassword"
+
+        android:maxLength="1"
+        android:textColor="@color/grey3"
+        android:textCursorDrawable="@drawable/cursor"
+        app:layout_constraintStart_toStartOf="@+id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/posting_vacancies_tv" />
+
+    <EditText
+        android:id="@+id/et2"
+        style="@style/RegularText.16size"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/back_grey1_corner8"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:textColor="@color/grey3"
+        android:textCursorDrawable="@drawable/cursor"
+        app:layout_constraintStart_toEndOf="@+id/et1"
+        app:layout_constraintTop_toBottomOf="@+id/posting_vacancies_tv" />
+
+    <EditText
+        android:id="@+id/et3"
+        style="@style/RegularText.16size"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/back_grey1_corner8"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:textColor="@color/grey3"
+        android:textCursorDrawable="@drawable/cursor"
+        app:layout_constraintStart_toEndOf="@+id/et2"
+        app:layout_constraintTop_toBottomOf="@+id/posting_vacancies_tv" />
+
+    <EditText
+        android:id="@+id/et4"
+        style="@style/RegularText.16size"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp16"
+        android:background="@drawable/back_grey1_corner8"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:textColor="@color/grey3"
+        android:textCursorDrawable="@drawable/cursor"
+        app:layout_constraintStart_toEndOf="@+id/et3"
+        app:layout_constraintTop_toBottomOf="@+id/posting_vacancies_tv" />
+
+
+    <Button
+        android:id="@+id/continue_bt"
+        style="@style/RegularText.14size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="@dimen/dp6"
+        android:layout_marginBottom="@dimen/dp6"
+        android:backgroundTint="@color/blue"
+        android:text="@string/continue_str"
+        app:cornerRadius="@dimen/dp8"
+        app:layout_constraintEnd_toEndOf="@id/RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/et1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

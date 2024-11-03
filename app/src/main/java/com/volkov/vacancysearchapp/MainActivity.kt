@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.volkov.core.utils.SessionManager
 import com.volkov.favoritevacancy.presentation.FavoriteVacancyViewModel
 import com.volkov.vacancysearchapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
@@ -29,10 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         // Подписываемся на обработку кликов по элементам меню
         binding?.bottomNav?.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.listVacanciesFragment -> navController.navigate(R.id.listVacanciesFragment)
-                R.id.favoriteVacanciesFragment -> navController.navigate(R.id.favoriteVacanciesFragment)
-                else -> navController.navigate(R.id.inProgressFragment)
+            if (isLoggedIn()) {
+                when (item.itemId) {
+                    R.id.listVacanciesFragment -> navController.navigate(R.id.listVacanciesFragment)
+                    R.id.favoriteVacanciesFragment -> navController.navigate(R.id.favoriteVacanciesFragment)
+                    else -> navController.navigate(R.id.inProgressFragment)
+                }
             }
             true
         }
@@ -43,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
     override fun onDestroy() {
         super.onDestroy()
@@ -60,5 +68,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             badge?.isVisible = false
         }
+    }
+    private fun isLoggedIn(): Boolean {
+        // Логика проверки авторизации пользователя (например, из SharedPreferences)
+        return SessionManager.isLoggedIn
     }
 }
