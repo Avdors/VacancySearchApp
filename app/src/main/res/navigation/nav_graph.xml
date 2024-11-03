@@ -45,5 +45,26 @@
         <deepLink app:uri="app://vacancy.com/vacancy/{vacancyId}?fromFavorites={fromFavorites}" />
     </fragment>
 
+    <!-- LoginFirstFragment -->
+    <fragment
+        android:id="@+id/loginFirstFragment"
+        android:name="com.volkov.auth.presentation.LoginFirstFragment"
+        android:label="LoginFirstFragment"
+        tools:layout="@layout/fragment_login_first">
+        <deepLink app:uri="app://vacancy.com/loginFirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginSecondFragment"
+        android:name="com.volkov.auth.presentation.LoginSecondFragment"
+        android:label="LoginSecondFragment"
+        tools:layout="@layout/fragment_login_second">
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <!-- Deep link для перехода на LoginSecondFragment -->
+        <deepLink app:uri="app://vacancy.com/loginSecondFragment?email={email}" />
+    </fragment>
+
 
 </navigation>
