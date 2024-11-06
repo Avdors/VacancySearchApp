@@ -90,14 +90,11 @@ dependencies {
 
     //Unit test
 
-    //androidTestImplementation(libs.mockk)
-
     implementation(libs.kotlinx.coroutines.test)
     implementation(libs.kotlin.test.junit)
     implementation(libs.truth.truth)
 
-//    androidTestImplementation(libs.androidx.junit)
-//    androidTestImplementation(libs.androidx.espresso.core)
+
     // Зависимость для работы с Ktor (если используете Ktor)
     androidTestImplementation(libs.ktor.client.android)
 //    androidTestImplementation(libs.ktor.client.mock)
@@ -116,16 +113,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.mockk.android)
     testImplementation(libs.mockk)
-    //implementation(libs.mockk)
 
-
-    //androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.test.runner) // AndroidJUnitRunner
     androidTestImplementation(libs.androidx.espresso.core)
-    //androidTestImplementation(libs.mockk.android) // MockK для Android тестов
-    //androidTestImplementation(libs.koin.test)
-    //androidTestImplementation(libs.koin.test.junit)
-    // androidTestImplementation(libs.ktor.client.android)
+
     androidTestImplementation(libs.ktor.client.mock)
 
 
