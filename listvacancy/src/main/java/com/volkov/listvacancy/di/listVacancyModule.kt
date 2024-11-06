@@ -52,7 +52,7 @@ val listVacancyModule = module {
             remoteDataSource = get(),
             localDataSource = get(),
             listVacancyDataMapper = get(),
-            listVacOfferDataMaper = get()
+            listVacOfferDataMapper = get()
         )
     }
 

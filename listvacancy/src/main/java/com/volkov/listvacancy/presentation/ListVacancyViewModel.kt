@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.volkov.listvacancy.domain.usecase.FavoriteUseCase
 import com.volkov.listvacancy.domain.usecase.ListVacancyUseCase
-import com.volkov.listvacancy.presentation.model.ButtonModel
 import com.volkov.listvacancy.presentation.model.ListOfferModel
 import com.volkov.listvacancy.presentation.model.ListVacancyModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,8 +27,13 @@ class ListVacancyViewModel(
 
     init {
         viewModelScope.launch {
+            // загружаем данные из сети в кеш
+            listVacancyUseCase.launchNetworkLoad()
+        }
+        viewModelScope.launch {
             observeVacanciesFromDB()
-            loadOffers()
+            observeOffersFromDB()
+
         }
     }
 
@@ -41,24 +45,17 @@ class ListVacancyViewModel(
                 _vacancies.value = uiVacancies
             }
         }
+
     }
 
-    suspend fun loadOffers() {
-        try {
-                val domainOffers = listVacancyUseCase.getOffers()
-
-                val uiOffers = domainOffers.map { domainModel ->
-                    ListOfferModel(
-                        id = domainModel.id ?: "",
-                        title = domainModel.title,
-                        link = domainModel.link,
-                        button = domainModel.button?.let { ButtonModel(it.text) }
-                    )
-                }
+    private fun observeOffersFromDB() {
+        viewModelScope.launch {
+            listVacancyUseCase.getOffersFromDB().collect { domainOffers ->
+                val uiOffers = ListOfferMapper.mapToUIModelList(domainOffers)
                 _offers.value = uiOffers
-            } catch (e: Exception) {
-                _error.value = e.message
             }
+        }
+
     }
 
     fun updateFavorites(vacancy: ListVacancyModel) {

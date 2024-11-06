@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp16"
         android:text="@string/ui_ux"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@id/resume_icon"
         app:layout_constraintStart_toEndOf="@id/resume_icon"
         app:layout_constraintTop_toBottomOf="@id/resume_text"
@@ -65,6 +66,7 @@
 
     <EditText
         android:id="@+id/letter_et"
+        style="@style/SemiboldText"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp64"
         android:layout_marginTop="@dimen/dp16"
@@ -78,7 +80,7 @@
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
         android:singleLine="false"
-        android:textColor="?attr/colorOnPrimary"
+        android:textColor="?attr/colorPrimary"
         android:textColorHint="@color/grey3"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/rightGuideline"

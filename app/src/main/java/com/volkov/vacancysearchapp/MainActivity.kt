@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-    //private val listVacancyViewModel: ListVacancyViewModel by viewModel()
+
     private val favoriteVacancyViewModel: FavoriteVacancyViewModel by viewModel()
     private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+
 
         lifecycleScope.launch(Dispatchers.IO) {
             favoriteVacancyViewModel.vacancies.collect { favorites ->

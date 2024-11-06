@@ -25,8 +25,8 @@ class LocalDataSource(
         vacancyDao.insertVacancies(vacancies)
     }
 
-    suspend fun getOffersFromDb(): List<OfferModelDataBase> {
-        return offerDao.getAllOffers()
+    fun getOffersFromDb(): Flow<List<OfferModelDataBase>> {
+        return offerDao.getAllOffersFlow()
     }
 
     suspend fun saveOffersToDb(offers: List<OfferModelDataBase>) {

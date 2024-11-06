@@ -8,7 +8,10 @@ interface ListVacancyRepository {
     fun getVacanciesFromDB(): Flow<List<ListVacancyDomainModel>>
     suspend fun getVacanciesFromRemote(): List<ListVacancyDomainModel>
     suspend fun getVacancies(): List<ListVacancyDomainModel>
-    suspend fun getOffers(): List<ListOfferDomainModel>
+
+    //suspend fun getOffers(): List<ListOfferDomainModel>
+    suspend fun getOffersFromDB(): Flow<List<ListOfferDomainModel>>
     suspend fun saveFavorite(vacancy: ListVacancyDomainModel)
     suspend fun deleteFavorite(vacancy: ListVacancyDomainModel)
+    suspend fun launchVacancyNetworkLoad()
 }

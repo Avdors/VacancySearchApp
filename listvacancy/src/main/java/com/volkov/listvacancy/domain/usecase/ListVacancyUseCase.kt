@@ -17,8 +17,12 @@ class ListVacancyUseCase(private val repository: ListVacancyRepository) {
         return repository.getVacancies()
     }
 
-    suspend fun getOffers(): List<ListOfferDomainModel> {
-        return repository.getOffers()
+    suspend fun getOffersFromDB(): Flow<List<ListOfferDomainModel>> {
+        return repository.getOffersFromDB()
+    }
+
+    suspend fun launchNetworkLoad() {
+        repository.launchVacancyNetworkLoad()
     }
 
 }

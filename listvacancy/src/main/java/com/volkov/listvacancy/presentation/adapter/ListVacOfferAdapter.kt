@@ -29,6 +29,17 @@ class ListVacOfferAdapter(
                 binding.recommendationIcon.visibility = View.GONE
             }
 
+            binding.offerTitle.text = offer.title
+            binding.offerTitle.maxLines = if (offer.button != null) 2 else 3
+
+            // Установливаю текст кнопки
+            if (offer.button != null) {
+                binding.offersActionTv.text = offer.button!!.text
+                binding.offersActionTv.visibility = View.VISIBLE
+            } else {
+                binding.offersActionTv.visibility = View.GONE
+            }
+
             itemView.setOnClickListener {
                 onItemClick(offer.link)
             }

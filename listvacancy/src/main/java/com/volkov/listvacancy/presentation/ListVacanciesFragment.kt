@@ -164,8 +164,6 @@ class ListVacanciesFragment : Fragment() {
         )
 
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
