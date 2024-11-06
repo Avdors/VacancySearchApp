@@ -6,7 +6,7 @@ import com.volkov.listvacancy.domain.repository.ListVacancyRepository
 import kotlinx.coroutines.flow.Flow
 
 class ListVacancyUseCase(private val repository: ListVacancyRepository) {
-    suspend fun getVacanciesFromDB(): Flow<List<ListVacancyDomainModel>> {
+    fun getVacanciesFromDB(): Flow<List<ListVacancyDomainModel>> {
         return repository.getVacanciesFromDB()
     }
 
