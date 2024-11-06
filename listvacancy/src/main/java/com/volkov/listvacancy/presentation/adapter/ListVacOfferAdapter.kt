@@ -34,7 +34,7 @@ class ListVacOfferAdapter(
 
             // Установливаю текст кнопки
             if (offer.button != null) {
-                binding.offersActionTv.text = offer.button!!.text
+                binding.offersActionTv.text = offer.button.text
                 binding.offersActionTv.visibility = View.VISIBLE
             } else {
                 binding.offersActionTv.visibility = View.GONE

@@ -126,7 +126,7 @@ class ListVacanciesFragment : Fragment() {
                 val totalvacancy = vacancies.size
 
                 val vacancy =
-                    wordDeclension.getVacancyCountString(totalvacancy.toInt(), requireContext())
+                    wordDeclension.getVacancyCountString(totalvacancy, requireContext())
 
                 binding?.quantityVacancy?.text = "$vacancy"
                 // Изначально показываю только первые 3 вакансии и кнопку "Еще вакансий"

@@ -28,6 +28,7 @@
         android:layout_marginEnd="@dimen/dp16"
         android:src="@drawable/response_icon"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        android:contentDescription=""
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
