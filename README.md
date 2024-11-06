@@ -35,7 +35,10 @@ An example of a job search app. You have the opportunity to view lists of vacanc
  
       ![image](https://github.com/user-attachments/assets/cd4dc31d-86e0-4b0a-aa4b-91c4fc430359)
 
-      ![vacancySearch](https://github.com/user-attachments/assets/c70ca46e-f258-496b-b2d5-a055ad7ee1a8)
+      ![vacancySearch320](https://github.com/user-attachments/assets/e79b2137-040c-45f3-8ead-a042927a4489)
+
+      
+
 
 
       
