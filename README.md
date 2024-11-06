@@ -1,6 +1,6 @@
 # Description
 
-An example of a job search app. You have the opportunity to view lists of vacancies, with detailed information. There is additional functionality - vacancies near you, raise your resume in the search. Ability to add a vacancy to your favorites list. Ability to view and edit the list of favorites. There is a function to respond to a vacancy. Write a cover letter or ask a question from the template of the vacancy card. Ability to see how many people have responded and how many people are looking at the vacancy. Data is received from the server in json format, cached in the database.
+An example of a job search app. You have the opportunity to view lists of vacancies, with detailed information. There is additional functionality - vacancies near you, raise your resume in the search. Ability to add a vacancy to your favorites list. Ability to view and edit the list of favorites. There is a function to respond to a vacancy. Write a cover letter or ask a question from the template of the vacancy card. Ability to see how many people have responded and how many people are looking at the vacancy. Data is received from the server in json format, cached in the database. Authorization when opening the application, receiving and entering a verification code.
 
 - **Navigation**:
     
