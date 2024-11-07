@@ -11,6 +11,7 @@ import io.ktor.client.plugins.ServerResponseException
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.client.statement.bodyAsText
+import io.ktor.http.Url
 import io.ktor.http.isSuccess
 import kotlinx.serialization.json.Json
 import java.net.UnknownHostException
@@ -18,13 +19,13 @@ import java.net.UnknownHostException
 class RemoteDataSource(private val client: HttpClient) {
 
     suspend fun getData(): ModelListResponseOfferAndVacancies {
+        val url = Url(UrlProvider.getUrl("vacancies") ?: throw Exception("URL not found"))
         val response = client.get {
-            val url =
-                UrlProvider.getUrl("vacancies")  // в core лежит список адресов для подключения, при работе с feature, их можно подменять вручную на любой тестовый адрес
-            url("https://drive.google.com/uc?export=download&id=1vMIv-cQR6dV-oEo2htuOhXMx5lp-FC-s")
-            //Log.d("RemoteDataSource", "Requesting data from URL: $url")
+//            val url =
+//                UrlProvider.getUrl("vacancies")  // вот здесь Ktor может интерпретировать переданный URL как относительный, и добавляет к нему //localhost
+            url(url)
         }
-
+        val test = response
         if (response.status.isSuccess()) {
 
             val json = response.bodyAsText()
