@@ -38,6 +38,8 @@ An example of a job search app. You have the opportunity to view lists of vacanc
       ![vacancySearch320](https://github.com/user-attachments/assets/e79b2137-040c-45f3-8ead-a042927a4489)
 
       [Core Module Documentation](docs/CORE.md) / [Core Module Documentation_RUS](docs/CORE_RUS.md)
+      
+      [ListVacancy Module Documentation](docs/LISTVACANCY.md) / [ListVacancy Module Documentation_RUS](docs/LISTVACANCY_RUS.md)
 
       
 
