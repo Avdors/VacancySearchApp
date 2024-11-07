@@ -1,4 +1,4 @@
-## Функция: `listVacancy`
+## Документация модуля: `listVacancy`
 
 ### Structure
 
