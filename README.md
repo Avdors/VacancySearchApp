@@ -1,4 +1,5 @@
 # Structure
+[excalidraw](https://excalidraw.com/#json=ltQqyzw1AMgwICCpkBFxr,KwnNqsPkdc_MRireRlHDiA)
 
 ![image](https://github.com/user-attachments/assets/cd4dc31d-86e0-4b0a-aa4b-91c4fc430359)
 
